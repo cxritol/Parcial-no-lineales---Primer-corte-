@@ -1,0 +1,38 @@
+import heapq
+
+buscador = Trie()
+
+titulos = [
+    ("Estructuras de Datos Avanzadas", 10),
+    ("Algoritmos y Complejidad", 8),
+    ("Bases de Datos Distribuidas", 7),
+    ("Aprendizaje Automático", 9)
+]
+
+for titulo, prioridad in titulos:
+    buscador.insertar(titulo.lower(), prioridad)
+
+
+def autocompletar(prefijo):
+
+    nodo = buscador.buscar_prefijo(prefijo.lower())
+
+    resultados = []
+
+    if nodo:
+        palabras = []
+        buscador.obtener_palabras(nodo, prefijo, palabras)
+
+        heap = []
+
+        for palabra in palabras:
+            nodo_palabra = buscador.buscar_prefijo(palabra)
+            heapq.heappush(heap, (-nodo_palabra.valor, palabra))
+
+        while heap:
+            resultados.append(heapq.heappop(heap)[1])
+
+    return resultados
+
+
+print(autocompletar("es"))
