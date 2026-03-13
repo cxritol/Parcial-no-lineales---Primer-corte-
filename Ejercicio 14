@@ -1,0 +1,24 @@
+import heapq
+
+class Tarea:
+
+    def __init__(self, prioridad, nombre):
+        self.prioridad = prioridad
+        self.nombre = nombre
+
+    def __lt__(self, other):
+        return self.prioridad < other.prioridad
+
+
+cola = []
+
+heapq.heappush(cola, Tarea(1, "Procesar datos"))
+heapq.heappush(cola, Tarea(3, "Actualizar sistema"))
+heapq.heappush(cola, Tarea(2, "Enviar reporte"))
+
+# simulación ejecución
+while cola:
+
+    tarea = heapq.heappop(cola)
+
+    print("Ejecutando:", tarea.nombre)
