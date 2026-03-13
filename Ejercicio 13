@@ -1,0 +1,18 @@
+import heapq
+
+heap = []
+
+# insertar elementos
+heapq.heappush(heap, 10)
+heapq.heappush(heap, 4)
+heapq.heappush(heap, 15)
+heapq.heappush(heap, 1)
+
+print("Heap:", heap)
+
+# extraer mínimo
+minimo = heapq.heappop(heap)
+
+print("Minimo:", minimo)
+
+print("Heap reorganizado:", heap)
