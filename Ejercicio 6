@@ -1,0 +1,19 @@
+trie = Trie()
+
+# Insertar palabras
+palabras = ["casa", "carro", "carta", "camino", "camisa"]
+
+for p in palabras:
+    trie.insertar(p)
+
+# Buscar prefijo
+prefijo = "ca"
+nodo = trie.buscar_prefijo(prefijo)
+
+# Generar sugerencias
+sugerencias = []
+
+if nodo:
+    trie.obtener_palabras(nodo, prefijo, sugerencias)
+
+print("Sugerencias:", sugerencias)
