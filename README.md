@@ -1,2 +1,7 @@
-# Parcial-no-lineales---Primer-corte-
-Este documento presenta el parcial académico correspondiente a las Semanas 5 y 6 de la asignatura Estructuras de Datos No Lineales. El parcial integra investigación, sustentación teórica, ejercicios complejos guiados y criterios de evaluación mediante rúbricas detalladas, alineadas con un enfoque por competencias.
+# Parcial no lineales - Primer corte 
+
+Las estructuras de datos constituyen uno de los pilares fundamentales en el desarrollo de algoritmos y sistemas informáticos eficientes. En particular, las estructuras de datos no lineales permiten organizar la información de forma más compleja y flexible que las estructuras lineales tradicionales, facilitando la representación de relaciones jerárquicas, dependencias y prioridades entre los datos. Estas estructuras son ampliamente utilizadas en diferentes áreas de la informática, como bases de datos, sistemas operativos, inteligencia artificial y motores de búsqueda.
+
+En este informe se analizan diversas estructuras de datos no lineales, entre ellas árboles N-arios, árboles Trie, tablas hash, heaps (montículos) y colas con prioridad. Para cada una de estas estructuras se estudian aspectos fundamentales como su definición formal, sus características principales, la forma en que se representan en memoria, las operaciones básicas que permiten manipular los datos y su complejidad temporal y espacial. Además, se presentan algunas de sus aplicaciones más relevantes en sistemas reales y se realiza un análisis comparativo con otras estructuras de datos.
+
+El objetivo de este trabajo es comprender el funcionamiento y la importancia de estas estructuras dentro del campo de la informática, así como analizar cómo su uso adecuado permite optimizar el almacenamiento, la búsqueda y el procesamiento de la información en diferentes contextos computacionales.
