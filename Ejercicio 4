@@ -1,0 +1,55 @@
+class Menu:
+    def __init__(self, opcion):
+        self.opcion = opcion
+        self.subopciones = []
+
+
+def agregar_opcion(menu, opcion):
+    menu.subopciones.append(opcion)
+
+
+menu_principal = Menu("Menu")
+
+archivo = Menu("Archivo")
+editar = Menu("Editar")
+ver = Menu("Ver")
+
+agregar_opcion(menu_principal, archivo)
+agregar_opcion(menu_principal, editar)
+agregar_opcion(menu_principal, ver)
+
+agregar_opcion(archivo, Menu("Nuevo"))
+agregar_opcion(archivo, Menu("Abrir"))
+agregar_opcion(archivo, Menu("Guardar"))
+
+
+# Simular navegación
+def navegar(menu, nivel=0):
+    print(" " * nivel * 2 + menu.opcion)
+
+    for sub in menu.subopciones:
+        navegar(sub, nivel + 1)
+
+
+navegar(menu_principal)
+
+
+# Contar nodos por nivel
+from collections import defaultdict
+
+def contar_por_nivel(raiz):
+    niveles = defaultdict(int)
+
+    cola = deque([(raiz, 0)])
+
+    while cola:
+        nodo, nivel = cola.popleft()
+        niveles[nivel] += 1
+
+        for hijo in nodo.subopciones:
+            cola.append((hijo, nivel + 1))
+
+    return niveles
+
+
+print(contar_por_nivel(menu_principal))
