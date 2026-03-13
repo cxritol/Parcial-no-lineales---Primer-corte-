@@ -1,0 +1,73 @@
+import time
+
+
+# estructura hash
+hash_table = {}
+
+palabras = ["python", "estructura", "datos", "algoritmo", "arbol"]
+
+for p in palabras:
+    hash_table[p] = True
+
+
+# búsqueda hash
+inicio = time.time()
+
+print("Hash:", "python" in hash_table)
+
+fin = time.time()
+
+print("Tiempo Hash:", fin - inicio)
+
+
+# estructura trie simple
+class TrieNode:
+    def __init__(self):
+        self.hijos = {}
+        self.fin = False
+
+
+class Trie:
+    def __init__(self):
+        self.raiz = TrieNode()
+
+    def insertar(self, palabra):
+
+        nodo = self.raiz
+
+        for letra in palabra:
+
+            if letra not in nodo.hijos:
+                nodo.hijos[letra] = TrieNode()
+
+            nodo = nodo.hijos[letra]
+
+        nodo.fin = True
+
+    def buscar(self, palabra):
+
+        nodo = self.raiz
+
+        for letra in palabra:
+
+            if letra not in nodo.hijos:
+                return False
+
+            nodo = nodo.hijos[letra]
+
+        return nodo.fin
+
+
+trie = Trie()
+
+for p in palabras:
+    trie.insertar(p)
+
+
+inicio = time.time()
+
+print("Trie:", trie.buscar("python"))
+
+fin = time.time()
+
+print("Tiempo Trie:", fin - inicio)
