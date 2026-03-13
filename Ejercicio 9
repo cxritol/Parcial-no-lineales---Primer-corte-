@@ -1,0 +1,20 @@
+diccionario_multi = Trie()
+
+# Insertar palabras con significado
+diccionario_multi.insertar("house", {"idioma": "ingles", "significado": "casa"})
+diccionario_multi.insertar("casa", {"idioma": "español", "significado": "house"})
+diccionario_multi.insertar("maison", {"idioma": "frances", "significado": "casa"})
+
+
+def buscar_palabra(palabra):
+
+    nodo = diccionario_multi.buscar_prefijo(palabra)
+
+    if nodo and nodo.fin_palabra:
+        return nodo.valor
+
+    return "No encontrada"
+
+
+print(buscar_palabra("casa"))
+print(buscar_palabra("house"))
