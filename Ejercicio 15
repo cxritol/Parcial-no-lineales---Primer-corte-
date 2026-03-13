@@ -1,0 +1,31 @@
+import heapq
+import random
+
+class Paquete:
+
+    def __init__(self, prioridad, id):
+
+        self.prioridad = prioridad
+        self.id = id
+
+    def __lt__(self, other):
+        return self.prioridad < other.prioridad
+
+
+cola_red = []
+
+# generar paquetes
+for i in range(5):
+
+    prioridad = random.randint(1, 10)
+
+    heapq.heappush(cola_red, Paquete(prioridad, i))
+
+
+# procesar paquetes
+while cola_red:
+
+    paquete = heapq.heappop(cola_red)
+
+    print("Procesando paquete", paquete.id,
+          "prioridad", paquete.prioridad)
