@@ -1,0 +1,53 @@
+class NodoArchivo:
+    def __init__(self, nombre, es_carpeta=True):
+        self.nombre = nombre
+        self.es_carpeta = es_carpeta
+        self.hijos = []
+
+
+def agregar(parent, nodo):
+    parent.hijos.append(nodo)
+
+
+# Crear sistema
+root = NodoArchivo("root")
+
+docs = NodoArchivo("Documentos")
+fotos = NodoArchivo("Fotos")
+
+agregar(root, docs)
+agregar(root, fotos)
+
+agregar(docs, NodoArchivo("tarea.docx", False))
+agregar(docs, NodoArchivo("tesis.pdf", False))
+
+agregar(fotos, NodoArchivo("viaje.jpg", False))
+
+
+# Búsqueda
+def buscar(nodo, nombre):
+    if nodo.nombre == nombre:
+        return nodo
+
+    for hijo in nodo.hijos:
+        encontrado = buscar(hijo, nombre)
+        if encontrado:
+            return encontrado
+
+    return None
+
+
+# Eliminación recursiva
+def eliminar(nodo):
+    for hijo in nodo.hijos:
+        eliminar(hijo)
+
+    nodo.hijos = []
+
+
+resultado = buscar(root, "tesis.pdf")
+
+if resultado:
+    print("Archivo encontrado:", resultado.nombre)
+else:
+    print("No encontrado")
