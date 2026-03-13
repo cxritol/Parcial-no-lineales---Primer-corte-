@@ -1,0 +1,23 @@
+clasificador = Trie()
+
+# Asociar intenciones
+clasificador.insertar("hola", "saludo")
+clasificador.insertar("buenos", "saludo")
+clasificador.insertar("comprar", "compra")
+clasificador.insertar("precio", "consulta")
+
+def clasificar(frase):
+
+    palabras = frase.split()
+
+    for palabra in palabras:
+        nodo = clasificador.buscar_prefijo(palabra)
+
+        if nodo and nodo.fin_palabra:
+            return nodo.valor
+
+    return "desconocido"
+
+
+print(clasificar("hola sistema"))
+print(clasificar("quiero comprar"))
