@@ -1,0 +1,48 @@
+class Modulo:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.dependencias = []
+
+
+def agregar_dependencia(modulo, dependencia):
+    modulo.dependencias.append(dependencia)
+
+
+sistema = Modulo("Sistema")
+
+frontend = Modulo("Frontend")
+backend = Modulo("Backend")
+database = Modulo("Database")
+
+agregar_dependencia(sistema, frontend)
+agregar_dependencia(sistema, backend)
+agregar_dependencia(backend, database)
+
+react = Modulo("React")
+bootstrap = Modulo("Bootstrap")
+
+agregar_dependencia(frontend, react)
+agregar_dependencia(frontend, bootstrap)
+
+
+# Mostrar dependencias
+def mostrar_dependencias(modulo, nivel=0):
+    print(" " * nivel * 2 + modulo.nombre)
+
+    for dep in modulo.dependencias:
+        mostrar_dependencias(dep, nivel + 1)
+
+
+mostrar_dependencias(sistema)
+
+
+# Analizar impacto de cambios
+def impacto(modulo):
+    print("Cambio en:", modulo.nombre)
+    print("Afecta a:")
+
+    for dep in modulo.dependencias:
+        print("-", dep.nombre)
+
+
+impacto(frontend)
