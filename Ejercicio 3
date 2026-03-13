@@ -1,0 +1,46 @@
+class Persona:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.hijos = []
+
+
+def agregar_hijo(padre, hijo):
+    padre.hijos.append(hijo)
+
+
+abuelo = Persona("Abuelo")
+padre = Persona("Padre")
+tio = Persona("Tio")
+
+agregar_hijo(abuelo, padre)
+agregar_hijo(abuelo, tio)
+
+hijo1 = Persona("Hijo1")
+hijo2 = Persona("Hijo2")
+
+agregar_hijo(padre, hijo1)
+agregar_hijo(padre, hijo2)
+
+
+# Calcular generaciones
+def generaciones(nodo, nivel=0):
+    print(" " * nivel * 2 + nodo.nombre)
+
+    for hijo in nodo.hijos:
+        generaciones(hijo, nivel + 1)
+
+
+generaciones(abuelo)
+
+
+# grado del árbol
+def grado_arbol(nodo):
+    grado = len(nodo.hijos)
+
+    for hijo in nodo.hijos:
+        grado = max(grado, grado_arbol(hijo))
+
+    return grado
+
+
+print("Grado del arbol:", grado_arbol(abuelo))
