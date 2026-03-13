@@ -1,0 +1,27 @@
+diccionario = Trie()
+
+palabras_diccionario = [
+    "python",
+    "programacion",
+    "estructura",
+    "datos",
+    "algoritmo"
+]
+
+for palabra in palabras_diccionario:
+    diccionario.insertar(palabra)
+
+
+def verificar_palabra(palabra):
+    nodo = diccionario.buscar_prefijo(palabra)
+
+    if nodo and nodo.fin_palabra:
+        return True
+    return False
+
+
+texto = ["python", "estrctura", "datos"]
+
+for palabra in texto:
+    if not verificar_palabra(palabra):
+        print("Palabra incorrecta:", palabra)
