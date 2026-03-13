@@ -1,0 +1,53 @@
+from collections import deque
+
+class Nodo:
+    def __init__(self, nombre):
+        self.nombre = nombre
+        self.hijos = []
+
+    def agregar_hijo(self, hijo):
+        self.hijos.append(hijo)
+
+
+# Crear estructura
+rectoria = Nodo("Rectoria")
+
+ingenieria = Nodo("Facultad Ingenieria")
+ciencias = Nodo("Facultad Ciencias")
+
+rectoria.agregar_hijo(ingenieria)
+rectoria.agregar_hijo(ciencias)
+
+sistemas = Nodo("Ingenieria Sistemas")
+civil = Nodo("Ingenieria Civil")
+
+ingenieria.agregar_hijo(sistemas)
+ingenieria.agregar_hijo(civil)
+
+sistemas.agregar_hijo(Nodo("Estructuras de Datos"))
+sistemas.agregar_hijo(Nodo("Bases de Datos"))
+
+
+# Recorrido por niveles
+def recorrido_por_niveles(raiz):
+    cola = deque([raiz])
+
+    while cola:
+        nodo = cola.popleft()
+        print(nodo.nombre)
+
+        for hijo in nodo.hijos:
+            cola.append(hijo)
+
+
+# Altura del árbol
+def altura(nodo):
+    if not nodo.hijos:
+        return 0
+    return 1 + max(altura(hijo) for hijo in nodo.hijos)
+
+
+print("Recorrido por niveles:")
+recorrido_por_niveles(rectoria)
+
+print("Altura del arbol:", altura(rectoria))
